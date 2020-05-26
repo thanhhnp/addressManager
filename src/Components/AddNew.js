@@ -93,7 +93,10 @@ class AddNew extends Component {
                         <label htmlFor="addWard">Ward</label>
                         <input type="text" className="form-control" id="addWard" name="addWard" onChange={(e)=>this.changeData(e)} defaultValue={this.props.editedItem.addWard}/>
                     </div>
-                    <button type="reset" className="btn btn-info" onClick={()=>this.addNew()}>{this.props.editedItem.addId ? "Edit" : "Add new"}</button>
+                    <div className="btn-group">
+                        <button type="reset" className="btn btn-info" onClick={()=>this.addNew()}>{this.props.editedItem.addId ? "Edit" : "Add new"}</button>
+                        <button className="btn btn-secondary" onClick={()=>this.props.changeStt()}>Cancel</button>
+                    </div>
                 </form>
             </div>
             </div>

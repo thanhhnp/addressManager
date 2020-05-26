@@ -14,7 +14,20 @@ class ListItem extends Component {
             addDate: this.props.addDate,
         }
         this.props.getItem(editedItem);
+        // if(!this.props.isAddNew){
+        //     
+        // }
         this.props.changeStt();
+    }
+    showButton = () => {
+        if(!this.props.isAddNew){
+            return(
+                <div className="btn-group">
+                    <button className="btn btn-outline-info" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
+                    <button className="btn btn-outline-danger" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
+                </div>
+            )
+        }
     }
     render() {
         return (
@@ -23,10 +36,7 @@ class ListItem extends Component {
                     <div className="card-header">
                     <span className="address__ord">{this.props.stt}</span>
                     <div className="address__action">
-                        <div className="btn-group">
-                        <button className="btn btn-outline-info" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
-                        <button className="btn btn-outline-danger" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
-                        </div>
+                        {this.showButton()}
                     </div>
                     </div>
                     <div className="card-body">
@@ -49,6 +59,7 @@ class ListItem extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     return {
+        isAddNew: state.isAddNew,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {

@@ -137,6 +137,22 @@ header.site-banner {
   font-weight: 600;
 }
 
+.address__item:nth-child(4n+1) .card {
+  border-color: #3ACEAD;
+}
+
+.address__item:nth-child(4n+2) .card {
+  border-color: #78E098;
+}
+
+.address__item:nth-child(4n+3) .card {
+  border-color: #B6EF81;
+}
+
+.address__item:nth-child(4n+4) .card {
+  border-color: #00B9B9;
+}
+
 .add {
   border: 1px solid #dfdfdf;
   border-radius: 0.25rem;

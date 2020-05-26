@@ -7,7 +7,15 @@ class Topbar extends Component {
         this.props.resetItem();
         this.props.changeStt();
     }
-
+    showAddLink = () => {
+        if(!this.props.isAddNew){
+            return (
+                <div className="site-nav__item">
+                        <a  href={"#"} onClick={(e)=>this.addNewForm(e)}>Add New Address</a>
+                </div>
+            );
+        }
+    }
     render() {
         return (
             <nav className="topbar">
@@ -16,9 +24,7 @@ class Topbar extends Component {
                     <a   href={"#"}>Address Manager</a>
                     </div>
                     <div className="site-nav">
-                    <div className="site-nav__item">
-                        <a   href={"#"} onClick={(e)=>this.addNewForm(e)}>Add New Address</a>
-                    </div>
+                    {this.showAddLink()}
                     <div className="site-nav__item">
                         <a href="#">Address List</a>
                     </div>
@@ -33,6 +39,7 @@ class Topbar extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
+        isAddNew: state.isAddNew,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
