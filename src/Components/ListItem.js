@@ -1,6 +1,21 @@
 import React, { Component } from 'react';
+import {connect} from 'react-redux';
 
 class ListItem extends Component {
+    getEditItem=()=>{
+        var editedItem = {
+            addId : this.props.addId,
+            addName:this.props.addName,
+            addWard:this.props.addWard,
+            addDistrict:this.props.addDistrict,
+            addCity:this.props.addCity,
+            addCountry:this.props.addCountry,
+            addUser:"1",
+            addDate: this.props.addDate,
+        }
+        this.props.getItem(editedItem);
+        this.props.changeStt();
+    }
 
     render() {
         return (
@@ -10,7 +25,7 @@ class ListItem extends Component {
                     <span className="address__ord">{this.props.stt}</span>
                     <div className="address__action">
                         <div className="btn-group">
-                        <button className="btn btn-outline-info"><i className="fa fa-pencil" />Edit</button>
+                        <button className="btn btn-outline-info" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
                         <button className="btn btn-outline-danger"><i className="fa fa-close" />Delete</button>
                         </div>
                     </div>
@@ -33,4 +48,19 @@ class ListItem extends Component {
     }
 }
 
-export default ListItem;
+const mapStateToProps = (state, ownProps) => {
+    return {
+    }
+}
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return {
+        changeStt: () => {
+            dispatch({type:"CHANGE_STT"})
+        },
+        getItem: (editedItem) => {
+            dispatch({type:"GET_ITEM",editedItem})
+        }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListItem)

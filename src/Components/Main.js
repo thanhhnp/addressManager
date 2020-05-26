@@ -59,11 +59,13 @@ class Main extends Component {
                             return(
                                 <ListItem 
                                 stt={key+1} 
+                                addId={value.addId}
                                 addName={value.addName} 
                                 addWard={value.addWard}
                                 addDistrict={value.addDistrict}
                                 addCity={value.addCity}
                                 addCountry={value.addCountry}
+                                addDate={value.addDate}
                                  ></ListItem>
                             )
                         })

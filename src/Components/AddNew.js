@@ -30,37 +30,60 @@ class AddNew extends Component {
         });
     }
     addNew = () => {
-        this.props.addNew(this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
-        
+        // If there is an address Id => Edit Item
+        if(this.props.editedItem.addId) {
+            this.props.editItem(this.props.editedItem.addId,this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
+        }
+        // Else => Add new Item
+        else 
+        {
+            this.props.addNew(this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
+        }
         this.props.changeStt();
+    }
+
+    //In case there's nothing changed (edit case)
+    componentDidMount() {
+        if(this.props.editedItem.addId) // => edit address
+        {
+            this.setState ( {
+                addDate: this.props.editedItem.addDate,
+                addName:this.props.editedItem.addName,
+                addWard:this.props.editedItem.addWard,
+                addDistrict:this.props.editedItem.addDistrict,
+                addCity:this.props.editedItem.addCity,
+                addCountry:this.props.editedItem.addCountry,
+                addUser:"1",
+            });
+        }
     }
     render() {
         return (
             <div className="col-4">
                 <div className="add">
-                <h3 className="add__title">Add New Address</h3>
+                <h3 className="add__title">{this.props.editedItem.addId ? "Edit Address" : "Add New Address"}</h3>
                 <form>
                     <div className="form-group">
                         <label htmlFor="addName">Name</label>
-                        <input type="text" className="form-control" name="addName" id="addName" onChange={(e)=>this.changeData(e)} />
+                        <input type="text" className="form-control" name="addName" id="addName" onChange={(e)=>this.changeData(e)} defaultValue={this.props.editedItem.addName}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="addCountry">Country</label>
-                        <input type="text" className="form-control" name="addCountry" id="addCountry"  onChange={(e)=>this.changeData(e)}/>
+                        <input type="text" className="form-control" name="addCountry" id="addCountry"  onChange={(e)=>this.changeData(e)} defaultValue={this.props.editedItem.addCountry}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="addCity">City</label>
-                        <input type="text" className="form-control" name="addCity" id="addCity" onChange={(e)=>this.changeData(e)} />
+                        <input type="text" className="form-control" name="addCity" id="addCity" onChange={(e)=>this.changeData(e)}  defaultValue={this.props.editedItem.addCity}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="addDistrict">District</label>
-                        <input type="text" className="form-control" name="addDistrict" id="addDistrict"  onChange={(e)=>this.changeData(e)}/>
+                        <input type="text" className="form-control" name="addDistrict" id="addDistrict"  onChange={(e)=>this.changeData(e)} defaultValue={this.props.editedItem.addDistrict}/>
                     </div>
                     <div className="form-group">
                         <label htmlFor="addWard">Ward</label>
-                        <input type="text" className="form-control" id="addWard" name="addWard" onChange={(e)=>this.changeData(e)}/>
+                        <input type="text" className="form-control" id="addWard" name="addWard" onChange={(e)=>this.changeData(e)} defaultValue={this.props.editedItem.addWard}/>
                     </div>
-                    <button type="reset" className="btn btn-info" onClick={()=>this.addNew()}>Add New</button>
+                    <button type="reset" className="btn btn-info" onClick={()=>this.addNew()}>{this.props.editedItem.addId ? "Edit" : "Add new"}</button>
                 </form>
             </div>
             </div>
@@ -69,6 +92,7 @@ class AddNew extends Component {
 }
 const mapStateToProps = (state, ownProps) => {
     return {
+        editedItem:state.editedItem,
     }
 }
 const mapDispatchToProps = (dispatch, ownProps) => {
@@ -78,6 +102,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         addNew: (addName,addWard,addDistrict,addCity,addCountry,addDate) => {
             dispatch({type:"ADD_ADDRESS",addName,addWard,addDistrict,addCity,addCountry,addDate})
+        },
+        editItem: (addId,addName,addWard,addDistrict,addCity,addCountry,addDate) => {
+            dispatch({type:"EDIT_ADDRESS",addId,addName,addWard,addDistrict,addCity,addCountry,addDate})
         }
     }
 }
