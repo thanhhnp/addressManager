@@ -24,22 +24,32 @@ class AddNew extends Component {
     changeData = (e) => {
         var fieldname = e.target.name;
         var fieldvalue = e.target.value;
-        console.log(fieldname + " - " +fieldvalue);
         this.setState({
             [fieldname] : fieldvalue,
         });
     }
     addNew = () => {
-        // If there is an address Id => Edit Item
-        if(this.props.editedItem.addId) {
-            this.props.editItem(this.props.editedItem.addId,this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
-        }
-        // Else => Add new Item
-        else 
+        var flag = true;
+        for(let index in this.state) 
         {
-            this.props.addNew(this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
+            if(this.state[index]==="") {flag = false}
         }
-        this.props.changeStt();
+        if(flag) //OK 
+        {
+            // If there is an address Id => Edit Item
+            if(this.props.editedItem.addId) {
+                this.props.editItem(this.props.editedItem.addId,this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
+            }
+            // Else => Add new Item
+            else 
+            {
+                this.props.addNew(this.state.addName,this.state.addWard,this.state.addDistrict,this.state.addCity,this.state.addCountry,this.state.addDate);
+            }
+            this.props.changeStt();
+        }
+        else {
+            alert("Required");
+        }
     }
 
     //In case there's nothing changed (edit case)

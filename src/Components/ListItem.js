@@ -16,7 +16,6 @@ class ListItem extends Component {
         this.props.getItem(editedItem);
         this.props.changeStt();
     }
-
     render() {
         return (
             <li className="address__item">
@@ -26,7 +25,7 @@ class ListItem extends Component {
                     <div className="address__action">
                         <div className="btn-group">
                         <button className="btn btn-outline-info" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
-                        <button className="btn btn-outline-danger"><i className="fa fa-close" />Delete</button>
+                        <button className="btn btn-outline-danger" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
                         </div>
                     </div>
                     </div>
@@ -59,6 +58,9 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         },
         getItem: (editedItem) => {
             dispatch({type:"GET_ITEM",editedItem})
+        },
+        deleteItem:(deletedId) => {
+            dispatch({type:"DELETE_ADDRESS",deletedId})
         }
     }
 }

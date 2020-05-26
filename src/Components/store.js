@@ -38,9 +38,11 @@ const allReducer = (state = addInitialState, action) => {
                 add_img:null,
                 add_created:action.addDate,
             })
-            console.log(action);
-            
+            // console.log(action);
             return state 
+        case "DELETE_ADDRESS":
+            addData.child(action.deletedId).remove();
+        return state
         default:
             return state
     }
