@@ -1,12 +1,25 @@
 import React, { Component } from 'react';
 import AddNew from './AddNew';
 import List from './List';
+import {addData} from '../firebaseConnect';
 
 class Main extends Component {
     constructor(props) {
         super(props);
+        this.state = {
+            isAddNew: false,
+            addList : [],
+        }
     }
     
+    showForm = () => {
+        if(this.state.isAddNew){
+            return (
+                <AddNew></AddNew>
+            );
+        }
+    }
+
     render() {
         return (
             <div className="content">
@@ -14,7 +27,7 @@ class Main extends Component {
                     <h2 className="content__title">Address List</h2>
                     <div className="row">
                         <List></List>
-                        <AddNew></AddNew>
+                        {this.showForm()}
                     </div>
                 </div>
             </div>
