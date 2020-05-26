@@ -9,4 +9,4 @@ const firebaseConfig = {
   appId: "1:46505841743:web:791de687583f23770f463a"
 };
 firebase.initializeApp(firebaseConfig);
-export const addData = firebase.database().ref('/addTable');
+export const addData = firebase.database().ref('/addTable').orderByChild('add_created');

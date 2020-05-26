@@ -2,18 +2,18 @@ import React, { Component } from 'react';
 import AddNew from './AddNew';
 import ListItem from './ListItem';
 import {addData} from '../firebaseConnect';
+import {connect} from 'react-redux';
 
 class Main extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            isAddNew: true,
             addList : [],
         }
     }
     
     showForm = () => {
-        if(this.state.isAddNew){
+        if(this.props.isAddNew){
             return (
                 <AddNew></AddNew>
             );
@@ -77,5 +77,10 @@ class Main extends Component {
         );
     }
 }
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isAddNew: state.isAddNew,
+    }
+}
 
-export default Main;
+export default connect(mapStateToProps)(Main)
