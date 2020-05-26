@@ -1,8 +1,11 @@
 $main-color: #17a2b8;
-$box-shadow: 0px 0px 10px 0px #333;
+$second-color: #0a454d;
+
+$box-shadow: 0px 0px 13px -7px #333;
 a {
     text-decoration: none !important;
 }
+
 // Topbar 
 nav.topbar {
     padding: 10px 0;
@@ -37,6 +40,8 @@ nav.topbar {
         }
     }
 }
+
+//Header
 header.site-banner {
     height: 30vh;
     background:url("/images/banner.jpg") center center no-repeat;
@@ -46,6 +51,8 @@ header.site-banner {
     align-items: center;
     text-align: center;
 }
+
+//Content 
 .content {
     padding: 70px 0;
     h2.content__title {
@@ -54,4 +61,84 @@ header.site-banner {
         margin-bottom: 30px;
         border-bottom: 1px solid #eee;
     }
+
+    .address {
+        list-style: none;
+        margin-bottom: 0;
+    }
+    .address__item {
+        .card {
+            margin-bottom: 20px;
+            transition: all 200ms;
+
+            .card-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center; 
+        }
+        &:hover {
+            box-shadow: $box-shadow;
+        }
+    }
+    
+    &:last-child{
+        .card {
+            margin-bottom: 0;
+        }
+    }
+    .address__ord {
+        width: 40px;
+        height: 40px;
+        line-height: 40px;
+        text-align: center;
+        background: #0a454d;
+        border-radius: 50%;
+        box-sizing: border-box;
+        color: #fff;
+    }
+    .address__img {
+        width: 30%;
+        float: left;
+
+        img {
+            width: 100%;
+            height: 130px;
+            object-fit: cover;
+        }
+    }
+    .address__info {
+        width: 70%;
+        float: left;
+        padding-left: 30px;
+        div {
+            margin-bottom: 20px;
+            span {
+                color: $second-color;
+                font-weight: 600;
+            }
+        }
+    }
+}
+}
+//Add New
+.add {
+    border: 1px solid #dfdfdf;
+    border-radius: 0.25rem;
+    overflow: hidden;
+
+    h3.add__title {
+        padding: 0.75rem 1.25rem;
+        background-color: $main-color;
+        color: #fff;
+        font-size: 20px;
+    }
+    form {
+        padding: 0.75rem 1.25rem;
+    }
+}
+
+
+//Footer 
+footer {
+    background: $second-color;
 }

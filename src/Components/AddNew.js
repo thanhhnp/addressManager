@@ -3,7 +3,8 @@ import React, { Component } from 'react';
 class AddNew extends Component {
     render() {
         return (
-            <div className="add col-4">
+            <div className="col-4">
+                <div className="add">
                 <h3 className="add__title">Add New Address</h3>
                 <form>
                 <div className="form-group">
@@ -26,8 +27,9 @@ class AddNew extends Component {
                     <label htmlFor="wardInput">Ward</label>
                     <input type="text" className="form-control" id="wardInput" />
                 </div>
-                <button type="submit" className="btn btn-primary">Add New</button>
+                <button type="submit" className="btn btn-info">Add New</button>
                 </form>
+            </div>
             </div>
         );
     }
