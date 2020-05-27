@@ -94,7 +94,7 @@ class AddNew extends Component {
             this.props.changeStt();
         }
         else {
-            alert("Required");
+            alert("All these fields are required");
         }
     }
 

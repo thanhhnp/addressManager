@@ -10,8 +10,8 @@ class Topbar extends Component {
     showAddLink = () => {
         if(!this.props.isAddNew){
             return (
-                <div className="site-nav__item">
-                        <a  href={"#"} onClick={(e)=>this.addNewForm(e)}>Add New Address</a>
+                <div className="site-nav__item add-new">
+                        <a  href={"#"} onClick={(e)=>this.addNewForm(e)}><i className="fa-address-book-o fa"></i> Add New Address</a>
                 </div>
             );
         }

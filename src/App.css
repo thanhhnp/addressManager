@@ -1,3 +1,8 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@400;600;700&display=swap");
+body {
+  font-family: 'Quicksand', sans-serif;
+}
+
 a {
   text-decoration: none !important;
 }
@@ -37,6 +42,14 @@ nav.topbar .container {
           align-items: center;
 }
 
+nav.topbar .container .site-title {
+  padding-left: 40px;
+  background: url(/images/address.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: left;
+}
+
 nav.topbar .container .site-title a {
   font-size: 20px;
   text-transform: uppercase;
@@ -51,6 +64,21 @@ nav.topbar .container .site-nav .site-nav__item {
 
 nav.topbar .container .site-nav .site-nav__item:first-child {
   border-left: none;
+}
+
+nav.topbar .container .site-nav .site-nav__item.add-new a {
+  background: #fff;
+  color: #17a2b8;
+  padding: 5px 15px;
+  border-radius: 3px;
+  -webkit-transition: 250ms;
+  transition: 250ms;
+}
+
+nav.topbar .container .site-nav .site-nav__item.add-new a:hover {
+  border: 1px solid #fff;
+  color: #fff;
+  background: none;
 }
 
 header.site-banner {
@@ -69,13 +97,14 @@ header.site-banner {
 .content {
   padding: 70px 0;
   min-height: 70vh;
+  background: #f2f2f2;
 }
 
 .content h2.content__title {
   font-size: 32px;
   padding-bottom: 30px;
   margin-bottom: 30px;
-  border-bottom: 1px solid #eee;
+  border-bottom: 1px solid #ccc;
 }
 
 .content .address {
@@ -164,27 +193,27 @@ header.site-banner {
 }
 
 .address__item:nth-child(4n+2) .card {
-  border-color: #0a454d;
-}
-
-.address__item:nth-child(4n+2) .card .card-header {
-  background-color: #0a454d;
-}
-
-.address__item:nth-child(4n+3) .card {
-  border-color: #944F91;
-}
-
-.address__item:nth-child(4n+3) .card .card-header {
-  background-color: #944F91;
-}
-
-.address__item:nth-child(4n+4) .card {
   border-color: #A13666;
 }
 
-.address__item:nth-child(4n+4) .card .card-header {
+.address__item:nth-child(4n+2) .card .card-header {
   background-color: #A13666;
+}
+
+.address__item:nth-child(4n+3) .card {
+  border-color: #0a454d;
+}
+
+.address__item:nth-child(4n+3) .card .card-header {
+  background-color: #0a454d;
+}
+
+.address__item:nth-child(4n+4) .card {
+  border-color: #944F91;
+}
+
+.address__item:nth-child(4n+4) .card .card-header {
+  background-color: #944F91;
 }
 
 .add {
