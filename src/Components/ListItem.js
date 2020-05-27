@@ -24,8 +24,8 @@ class ListItem extends Component {
         if(!this.props.isAddNew){
             return(
                 <div className="btn-group">
-                    <button className="btn btn-edit" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
-                    <button className="btn btn-delete" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
+                    <button className="btn btn-edit" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/> Edit</button>
+                    <button className="btn btn-delete" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" /> Delete</button>
                 </div>
             )
         }
