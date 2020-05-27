@@ -19,12 +19,16 @@ const allReducer = (state = addInitialState, action) => {
                 add_city:action.addCity,
                 add_country:action.addCountry,
                 user_id:"1",
-                add_img:null,
+                add_img:action.addImg,
                 add_created:action.addDate,
-            })
+            });
+            console.log(action);
+            
             return state
         case "GET_ITEM":
+            console.log(action.editedItem);
             return {...state,editedItem:action.editedItem} //get information of the edited Address
+            
         case "RESET_ITEM":
             return {...state,editedItem:{}}
         case "EDIT_ADDRESS":
@@ -35,10 +39,10 @@ const allReducer = (state = addInitialState, action) => {
                 add_city:action.addCity,
                 add_country:action.addCountry,
                 user_id:"1",
-                add_img:null,
+                add_img:action.addImg,
                 add_created:action.addDate,
             })
-            // console.log(action);
+            console.log(action);
             return state 
         case "DELETE_ADDRESS":
             addData.child(action.deletedId).remove();

@@ -12,6 +12,7 @@ class ListItem extends Component {
             addCountry:this.props.addCountry,
             addUser:"1",
             addDate: this.props.addDate,
+            addImg: this.props.addImg,
         }
         this.props.getItem(editedItem);
         // if(!this.props.isAddNew){
@@ -23,15 +24,15 @@ class ListItem extends Component {
         if(!this.props.isAddNew){
             return(
                 <div className="btn-group">
-                    <button className="btn btn-outline-info" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
-                    <button className="btn btn-outline-danger" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
+                    <button className="btn btn-edit" onClick={()=>this.getEditItem()}><i className="fa fa-pencil"/>Edit</button>
+                    <button className="btn btn-delete" onClick={() => { if (window.confirm('Are you sure to delete this address?')) this.props.deleteItem(this.props.addId)} }><i className="fa fa-close" />Delete</button>
                 </div>
             )
         }
     }
     render() {
         return (
-            <li className="address__item">
+            <li className="address__item col-12 col-sm-6">
                 <div className="card">
                     <div className="card-header">
                     <span className="address__ord">{this.props.stt}</span>
@@ -41,14 +42,14 @@ class ListItem extends Component {
                     </div>
                     <div className="card-body">
                     <div className="address__img">
-                        <img src={this.props.addImg || "http://placehold.it/700x400"} alt="" />
+                        <img src={this.props.addImg || "/images/temp.jpg"} alt="" />
                     </div>
                     <div className="address__info">
-                        <div className="d-block w-100 street"><span>Name: </span> {this.props.addName}</div>
-                        <div className="d-inline-block w-50 ward"><span>Ward: </span> {this.props.addWard}</div>
-                        <div className="d-inline-block w-50 district"><span>District: </span> {this.props.addDistrict}</div>
-                        <div className="d-inline-block w-50 city"><span>City: </span> {this.props.addCity}</div>
-                        <div className="d-inline-block w-50 country"><span>Country: </span> {this.props.addCountry}</div>
+                        <div className="w-100 street"><span>Name: </span> {this.props.addName}</div>
+                        <div className="w-50 ward"><span>Ward: </span> {this.props.addWard}</div>
+                        <div className=" w-50 district"><span>District: </span> {this.props.addDistrict}</div>
+                        <div className="w-50 city"><span>City: </span> {this.props.addCity}</div>
+                        <div className="w-50 country"><span>Country: </span> {this.props.addCountry}</div>
                     </div>
                     </div>
                 </div>

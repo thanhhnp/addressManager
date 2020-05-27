@@ -33,9 +33,10 @@ class Main extends Component {
                 var addCity = element.val().add_city;
                 var addUser = element.val().user_id;
                 var addDate = element.val().add_created;
+                var addImg = element.val().add_img;
                 //gắn phần tử mới vào mảng
                 addListArr.push({
-                    addId,addName,addWard,addDistrict,addCity,addUser,addDate,addCountry
+                    addId,addName,addWard,addDistrict,addCity,addUser,addDate,addCountry,addImg
                 });
             });
             //set state noteList
@@ -54,6 +55,7 @@ class Main extends Component {
                     <h2 className="content__title">Address List</h2>
                     <div className="row">
                     <ul className="address col">
+                        <div className="row">
                     {
                         this.state.addList.map((value,key) => {
                             return(
@@ -66,10 +68,12 @@ class Main extends Component {
                                 addCity={value.addCity}
                                 addCountry={value.addCountry}
                                 addDate={value.addDate}
+                                addImg={value.addImg}
                                  ></ListItem>
                             )
                         })
                     }
+                    </div>
                     </ul>
                         {this.showForm()}
                     </div>
